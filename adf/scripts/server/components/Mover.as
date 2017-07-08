@@ -5,8 +5,6 @@ import ftl;
 
 // adf
 import orders;
-// import orders.Order;
-// from orders.AutoExploreOrder import AutoExploreOrder;
 
 const double straighDot = 0.99999;
 
@@ -574,7 +572,6 @@ tidy class Mover : Component_Mover, Savable {
 	}
 
 	// adf
-	double mvel = 0.0;
 	bool flag = false;
 
 	double moverTick(Object& obj, double time) {
@@ -583,9 +580,6 @@ tidy class Mover : Component_Mover, Savable {
 
 		// adf
 		if (obj.hasOrder(OT_AutoExplore, true)) {
-			// if (obj.velocity.length > mvel)
-			// 	mvel = obj.velocity.length;
-			// obj.velocity = obj.velocity.normalize(mvel);
 			vec3d dist = get_moveDestination(obj) - obj.position;
 			if (dist.length > 0 && dist.length < 1000 && !flag) {
 				obj.clearOrders();

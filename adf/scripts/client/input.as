@@ -383,7 +383,6 @@ vec3d lastAIFocus;
 
 // adf
 bool flag1 = false;
-// bool flag2 = false;
 
 void doStuff() {
 	Empire@ player = getEmpire(0);
@@ -395,13 +394,6 @@ void doStuff() {
 	if (floor(bt) % 30 != 0 && flag1) {
 		flag1 = false;
 	}
-	// if (gameTime % 30 == 0 && !flag2) {
-	// 	flag2 = true;
-	// 	pause();
-	// }
-	// if (gameTime % 30 == 0 && flag2) {
-	// 	flag2 = false;
-	// }
 }
 
 void tick(double time) {

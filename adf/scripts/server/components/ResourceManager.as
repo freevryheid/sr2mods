@@ -548,12 +548,12 @@ tidy class ResourceManager : Component_ResourceManager, Savable {
 
 	void resetBudget(Empire& emp) {
 		if(Budget_CycleId != 0) {
-			print(storedWelfare);
 			int remaining = Budget_Remaining + storedWelfare - Budget_Bonus;
 
 			//New values for each welfare type
 			int nwf_influence = 0, nwf_energy = 0, nwf_research = 0, nwf_hw_labor = 0, nwf_defense = 0;
 
+			// adf maintain storedWelfare
 			if(remaining > 0) {
 				switch(welfareMode) {
 					case WM_Influence:
