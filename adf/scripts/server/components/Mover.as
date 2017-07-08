@@ -579,7 +579,7 @@ tidy class Mover : Component_Mover, Savable {
 			return 0.1;
 
 		// adf
-		if (obj.hasOrder(OT_AutoExplore, true)) {
+		if (obj.hasLeaderAI && obj.hasOrder(OT_AutoExplore, true)) {
 			vec3d dist = get_moveDestination(obj) - obj.position;
 			if (dist.length > 0 && dist.length < 1000 && !flag) {
 				obj.clearOrders();
