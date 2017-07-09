@@ -382,24 +382,32 @@ GuiEvent joyGuiEvent;
 vec3d lastAIFocus;
 
 // adf
-bool flag1 = false;
+bool flag = false;
+int cyc = 0;
+
+void cyc30(double bt) {
+	if (double(cyc)*30.0 - bt <= 0 && !flag) {
+		cyc += 1;
+		flag = true;
+		pause();
+	}
+}
 
 void doStuff() {
 	Empire@ player = getEmpire(0);
 	double bt = player.get_BudgetTimer();
-	if (floor(bt) % 30 == 0 && !flag1) {
-		flag1 = true;
-		pause();
-	}
-	if (floor(bt) % 30 != 0 && flag1) {
-		flag1 = false;
-	}
+	cyc30(bt);
+	if (double(cyc)*30.0 - bt > 0 && flag)
+		flag = false;
+	if (cyc > 1 && !flag && bt < 30)
+		cyc = 0;
 }
 
 void tick(double time) {
 	if(game_state != GS_Game)
 		return;
 
+	// adf
 	doStuff();
 
 	if(FollowAI.value != 0) {
